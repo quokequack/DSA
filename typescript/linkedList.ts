@@ -1,7 +1,7 @@
 class No {
     valor: number;
-    proximo?: No | null;
-    anterior?: No | null;
+    proximo: No | null = null;
+    anterior: No | null = null;
 
 
     constructor(valor: number){
@@ -11,8 +11,8 @@ class No {
 }
 
 class DoublyLinkedList {
-    head?: No | null;
-    tail?: No | null;
+    head: No | null = null;
+    tail: No | null = null;
 
 
     public addToFront(valor: number) { // adiciona um novo no na frentezinha da lista tipo aqui->OOOOO
@@ -96,6 +96,22 @@ class DoublyLinkedList {
         }
 
     }
+
+    public inverteLista() {
+        let atual: No | null = this.head;
+        let temp: No | null = null;
+
+        while(atual !== null){
+            temp = atual.proximo;
+            atual.proximo = atual.anterior;
+            atual.anterior = temp;
+            atual = atual.anterior;
+        }
+
+        temp = this.head;
+        this.head = this.tail;
+        this.tail = temp;
+    }
 }
 
 let dll = new DoublyLinkedList();
@@ -108,3 +124,6 @@ dll.addToFront(33);
 
 console.log(dll.toArray());
 
+dll.inverteLista();
+
+console.log(dll.toArray());
