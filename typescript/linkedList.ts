@@ -106,6 +106,5 @@ dll.addToEnd(2);
 dll.addToEnd(64);
 dll.addToFront(33);
 
-
 console.log(dll.toArray());
 
